@@ -12,15 +12,13 @@ std::ihserialstream serin(Serial);
 
 SerialShell* shell;
 
-void setup()
-{
+void setup() {
     Serial.begin(9600);
     // 入出力シリアルストリームクラスの参照で初期化
     shell = new SerialShell(&serout, &serin);
 }
 
-void loop()
-{
+void loop() {
     int ret;
     std::vector<std::string> args;  // コマンド引数のリスト
 
@@ -28,7 +26,7 @@ void loop()
     ret = shell->readCommand();
     // ret　>　0 なら有効データあり
     if (ret > 0) {
-    	// 引数のリストを表示
+        // 引数のリストを表示
         shell->printArgs();
         // 引数のリストをGet
         args = shell->getArgs();
